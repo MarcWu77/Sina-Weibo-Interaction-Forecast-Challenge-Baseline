@@ -9,5 +9,10 @@ sentiment = []
 for text in cleaned_data["cleaned_content"]:
     s = SnowNLP(text)
     sentiment.append(s.sentiments)
-    
+
+#Save Sentiments
+
+sent = pd.DataFrame(sentiment)
+sentiment_data = pd.concat([cleaned_data, sent], axis=1, sort=False)
+sentiment_data.to_csv('C:/Users/hpena/sentiment_data.csv', index=False)    
 
